@@ -17,6 +17,7 @@ var gulp = require('gulp'),                               //gulp核心
     source = require('vinyl-source-stream'),              //将常规流转换为包含 Stream 的 vinyl 对象
     glob = require('glob'),                               //把多个文件添加到 browserify 中
     buffer = require('vinyl-buffer'),                     //将 vinyl 对象内容中的 Stream 转换为 Buffer
+    concat = require('gulp-concat'),                      //拼接js文件
     riot = require('gulp-riot');                          //riot gulp插件(https://github.com/e-jigsaw/gulp-riot)
     
 
@@ -59,6 +60,7 @@ gulp.task('riot', function () {
 
 gulp.task('riot-tags', ['riot'], function() {
    gulp.src(target.tags_js_in_dev)
+       .pipe(concat('all_tags.js'))
        .pipe(gulp.dest(target.tags_js_in_pro))
        .pipe(notify({message: 'Riot标签转移成功'}));
 })
@@ -129,7 +131,8 @@ gulp.task('browser-sync', function () {
     files: [                                           //指定文件注入
       'build/*.html', 
       'build/css/*.css', 
-      'build/js/*.js'
+      'build/js/*.js',
+      'build/js/tags/*.js'
     ]       
   });
 });
@@ -161,6 +164,10 @@ gulp.task('image', function () {
 
 gulp.task('watch', ['browser-sync'], function () {
   
+  gulp.watch(target.tags_src, ['riot']);
+  
+  gulp.watch(target.tags_js_in_dev, ['riot-tags']);
+  
   gulp.watch(target.css_src, ['css']);
   
   gulp.watch(target.js_lint_src, ['js-lint']);
@@ -174,6 +181,7 @@ gulp.task('watch', ['browser-sync'], function () {
 });
 
 gulp.task('default', [
+  'riot',
   'riot-tags',
   'css', 
   'js-libs',

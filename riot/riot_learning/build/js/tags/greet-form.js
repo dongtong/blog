@@ -7,9 +7,10 @@
     tagger(window.riot);
   }
 })(function(riot) {
-riot.tag2('hello-world', '<h3>Hello {opts.who}</h3>', '', '', function(opts) {
+riot.tag2('greet-form', '<form onsubmit="greet"><input type="text" name="who"><button>问候</button></form><h4>你好: {this.somebody}</h4>', '', '', function(opts) {
+    this.greet = function () {
+      this.somebody = this.who.value;
+    }
 }, '{ }');
-
-
 
 });

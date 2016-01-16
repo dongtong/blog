@@ -1,3 +1,4 @@
 <hello-world>
-  <h3>Hello Riot</h3>
+  <h3>Hello {opts.who}</h3>
 </hello-world>
+
