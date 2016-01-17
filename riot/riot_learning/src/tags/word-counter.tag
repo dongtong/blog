@@ -23,5 +23,6 @@
     getDecreasedContent = (content) => {
       return content.substr(0, content.length - 1);
     }
+    
   </script>
 </word-counter>

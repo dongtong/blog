@@ -213,12 +213,12 @@ gulp.task('default', [
   'browserify',
   'riot',
   'riot-tags',
-  'css', 
-  'js-libs',
-  'js-lint', 
+  //'css', 
+  //'js-libs',
+  //'js-lint', 
   // 'js-bundle', 
   'html-mini', 
-  'image', 
+  //'image', 
   'browser-sync', 
   'watch'
 ], function () {
