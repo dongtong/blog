@@ -19,3 +19,24 @@ languages的值为:
         {name: 'Go'}
       ];
     </script>
+
+可以在mount时指定参数
+
+    import worldCounter from '../tags/world-counter.tag';
+
+    let params = {
+      languages: [
+        {name: 'JavaScript'},
+        {name: 'Ruby'},
+        {name: 'Node'},
+        {name: 'Python'},
+        {name: 'Go'}
+      ];
+    };
+
+    Riot.mount(worldCounter, params);
+
+word-counter.tag中修改为:
+
+    <div each={opts.languages}>{name}</div>
+
