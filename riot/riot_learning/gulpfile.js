@@ -3,6 +3,7 @@
 *******************************************************************************************/
 
 var gulp = require('gulp'),                               //gulp核心
+    path = require('path'),
     uglify = require('gulp-uglify'),                      //压缩js文件
     jshint = require('gulp-jshint'),                      //检查js是否OK
     rename = require('gulp-rename'),                      //重命名文件
@@ -18,7 +19,9 @@ var gulp = require('gulp'),                               //gulp核心
     glob = require('glob'),                               //把多个文件添加到 browserify 中
     buffer = require('vinyl-buffer'),                     //将 vinyl 对象内容中的 Stream 转换为 Buffer
     concat = require('gulp-concat'),                      //拼接js文件
-    riot = require('gulp-riot');                          //riot gulp插件(https://github.com/e-jigsaw/gulp-riot)
+    riot = require('gulp-riot'),                          //riot gulp插件(https://github.com/e-jigsaw/gulp-riot)
+    babelify = require('babelify'),                       //编译es2015
+    riotify = require('riotify');                         //riot browserify
     
 
 /*******************************************************************************************
@@ -63,7 +66,33 @@ gulp.task('riot-tags', ['riot'], function() {
        .pipe(concat('all_tags.js'))
        .pipe(gulp.dest(target.tags_js_in_pro))
        .pipe(notify({message: 'Riot标签转移成功'}));
-})
+});
+
+gulp.task('browserify', function () {
+  return browserify({
+    debug: true,
+    entries: ['src/js/app.js'],
+    extensions: ['js']
+  })
+  .transform(babelify)
+  .transform(riotify)
+  .bundle()
+  .pipe(source('app.js'))
+  .pipe(plumber({
+    errorHandler: function (err) {
+      console.log(err.message);
+      this.emit('end');
+    }
+  }))
+  .pipe(gulp.dest(target.js_dest))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(buffer())
+  .pipe(uglify())
+  //.pipe(streamify(uglify(mangle: true)))
+  .pipe(gulp.dest(target.js_dest))
+  .pipe(browserSync.reload({stream: true}))
+  .pipe(notify({message: 'Riot browserify完成!'}));
+});
 
 /*******************************************************************************************
   CSS Task
@@ -181,12 +210,13 @@ gulp.task('watch', ['browser-sync'], function () {
 });
 
 gulp.task('default', [
+  'browserify',
   'riot',
   'riot-tags',
   'css', 
   'js-libs',
   'js-lint', 
-  'js-bundle', 
+  // 'js-bundle', 
   'html-mini', 
   'image', 
   'browser-sync', 
