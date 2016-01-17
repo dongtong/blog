@@ -193,7 +193,7 @@ gulp.task('image', function () {
 
 gulp.task('watch', ['browser-sync'], function () {
   
-  gulp.watch(target.tags_src, ['riot']);
+  gulp.watch(target.tags_src, ['riot', 'browserify']);
   
   gulp.watch(target.tags_js_in_dev, ['riot-tags']);
   
