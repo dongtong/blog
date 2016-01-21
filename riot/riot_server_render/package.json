@@ -1,0 +1,30 @@
+{
+  "name": "riot_server_render",
+  "version": "0.0.1",
+  "description": "Server side render riot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dongtong/riot_server_render.git"
+  },
+  "keywords": [
+    "Riot",
+    "Server",
+    "Express",
+    "Swig"
+  ],
+  "author": "dongtong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dongtong/riot_server_render/issues"
+  },
+  "homepage": "https://github.com/dongtong/riot_server_render#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "riot": "^2.3.13",
+    "swig": "^1.4.2"
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Server Side Render</title>
+  </head>
+  <body>
+    {{ tag_content | safe }}
+    <script src="libs/riot.min.js"></script>
+    <script src="js/hello-world.js"></script>
+    <script>
+    	riot.mount('*', {name: "{{greetName}}"});
+    </script>
+  </body>
+</html>
