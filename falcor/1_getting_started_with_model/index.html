@@ -25,9 +25,38 @@
     	}
     });
 
-    users.getValue('userList[0].username').then(function(value) {
-    	console.log(value)
-    });
+    //get single value
+    users.getValue('userList[0].username')
+         .then(function(json) { //async
+			     console.log(json)
+			   });
+
+    /**
+     * get multiple values
+     * get a json object( from json model fragment)
+     */
+    users.get('userList[0..1].username') //javascript path
+         .then(function(json) {
+			     console.log(json)
+			     console.log(JSON.stringify(json, null, 4))
+			   });
+
+    /**
+     * get more json values
+     */
+		users.get('userList[0..1].username', 'userList[0..1].age') //javascript path
+         .then(function(json) {
+			     console.log(json);
+			     console.log(JSON.stringify(json, null, 4));
+			   });
+    
+    //=> equals to 
+   
+		users.get('userList[0..1]["username", "age"]') //javascript path
+         .then(function(json) {
+			     console.log(json);
+			     console.log(JSON.stringify(json, null, 4));
+			   });
     </script>
   </body>
 </html>
