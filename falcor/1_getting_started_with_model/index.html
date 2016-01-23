@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Model</title>
+    <script src="../dist/js/falcor.browser.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var users = new falcor.Model({
+    	cache: {
+    		userList: [
+    			{
+    				id: 1,
+    				username: 'foo',
+    				age: 28,
+    				rate: 5
+    			},{
+    				id: 2,
+    				username: 'bar',
+    				age: 30,
+    				rate: 4
+    			}
+    		]
+    	}
+    });
+
+    users.getValue('userList[0].username').then(function(value) {
+    	console.log(value)
+    });
+    </script>
+  </body>
+</html>
