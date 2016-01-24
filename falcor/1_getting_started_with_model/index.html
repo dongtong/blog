@@ -7,8 +7,14 @@
   </head>
   <body>
     <script type="text/javascript">
+
+    var $ref = falcor.Model.ref;
     var users = new falcor.Model({
     	cache: {
+    		othersInfo: {
+    				interesting: 'Programming',
+    				goodAt: 'JavaScript'
+    		},
     		userList: [
     			{
     				id: 1,
@@ -19,7 +25,18 @@
     				id: 2,
     				username: 'bar',
     				age: 30,
-    				rate: 4
+    				rate: 4    			
+    			}
+    		],
+    		others: [
+    			{
+    				id: 1,
+    				username: 'foobar',
+    				othersInfo: $ref("baseInfo['info']")
+    			},{
+    				id: 2,
+    				username: 'chachacha',
+    				othersInfo: $ref("baseInfo['info']")
     			}
     		]
     	}
@@ -57,6 +74,28 @@
 			     console.log(json);
 			     console.log(JSON.stringify(json, null, 4));
 			   });
+
+		/**
+     * Set model value
+     * JSON graph
+     */
+    users.setValue('userList[0].rate', 6)
+         .then(function(value) {
+         	  users.get('userList[0..1]["username", "age", "rate"]')
+         	       .then(function(json) {
+         	       		console.log(JSON.stringify(json, null, 4));
+         	       		console.log(users);
+         	       });
+         })
+
+    //JSON Graph(Common JSON fragment in othersInfo)
+   	users.get('others[0..1]["id", "username", "othersInfo"]')
+         .then(function(json){
+         	  console.log('-------')
+         	  console.log(JSON.stringify(json, null, 4));
+         });    
     </script>
+
+
   </body>
 </html>
