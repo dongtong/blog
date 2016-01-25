@@ -1,0 +1,21 @@
+{
+  "name": "virtual-dom",
+  "version": "0.0.1",
+  "description": "virtual dom tips",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/dongtong/blog/virtual-dom"
+  },
+  "keywords": [
+    "virtual-dom"
+  ],
+  "author": "dongtong",
+  "license": "MIT",
+  "dependencies": {
+    "virtual-dom": "^2.1.1"
+  }
+}
