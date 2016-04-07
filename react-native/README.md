@@ -1,4 +1,4 @@
-### 30天学习React Native
+### 学习React Native
 
 本系列纪录React Native学习,深入了解React Native。
 
