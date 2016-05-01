@@ -1,0 +1,22 @@
+<html> 
+	<head>
+		<title>Hello Vue</title> 
+	</head>
+	<body>
+		<div id="app">
+		    <!--{{ Binding Expression }}-->
+			<h1>{{ message }}</h1> 
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> 
+	<script>
+		var data = {
+			message: "Hello Vue.js"
+		};
+
+		new Vue({
+			el: '#app',
+			data: data
+		}); 
+	</script>
+</html>
