@@ -1,0 +1,23 @@
+<html> 
+	<head>
+		<title>Two way binding</title> 
+	</head>
+	<body>
+		<div id="app">
+		    <h1>{{ message }}</h1>
+		    <!-- v-model directive inside input means which variable should bind to this input -->
+			<input type="text" v-model="message" />
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> 
+	<script>
+		var data = {
+			message: "Hello Vue.js"
+		};
+
+		new Vue({
+			el: '#app',
+			data: data
+		}); 
+	</script>
+</html>
