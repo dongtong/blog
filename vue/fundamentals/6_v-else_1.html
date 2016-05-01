@@ -1,0 +1,27 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>v-show</title> 
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-show="!message">发送求助信息</h1>
+			<!-- v-else必须紧跟在v-show活着v-if后面 -->
+			<h1 v-else>求助信息内容如下</h1>
+		    
+		    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+		    <!-- 仅仅当message变量为true时,button才显示 -->
+		    <button v-show="message">Send Help</button>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		
+		new Vue({
+			el: '#app',
+			data: {
+				message: "Hello Vue.js"		
+			}
+		}); 
+	</script>
+</html>

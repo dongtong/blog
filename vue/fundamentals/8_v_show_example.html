@@ -1,0 +1,29 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>v-show</title> 
+	</head>
+	<body>
+		<div id="app">
+			<template v-if="sex && name">
+				<h1 v-show="sex=='male'">你好, {{name}} 先生</h1>
+				<h1 v-else>你好, {{name}} 女士</h1>
+			</template>
+			
+			<label for="gender">输入姓名:</label><br/>
+			<input type="text" v-model="name" />
+			<br/>
+
+			<label for="gender">输入性别:</label><br/>
+			<input type="radio" v-model="sex" value="male" name="sex"/> 男 | 
+			<input type="radio" v-model="sex" value="female" name="sex"/> 女
+			<br/>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		new Vue({
+			el: '#app'
+		}); 
+	</script>
+</html>
