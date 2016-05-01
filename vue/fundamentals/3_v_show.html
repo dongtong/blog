@@ -1,0 +1,29 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>v-show</title> 
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-show="!message">发送求助信息</h1>
+		    <!-- 指令就是类库在标签上加上的一段标识，对DOM元素进行一些处理 -->
+		    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+		    <!-- 仅仅当message变量为true时,button才显示 -->
+		    <button v-show="message">Send Help</button>
+		</div>
+		<pre>
+			{{ $data | json }}
+		</pre>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		var data = {
+			message: "Hello Vue.js"
+		};
+
+		new Vue({
+			el: '#app',
+			data: data
+		}); 
+	</script>
+</html>
