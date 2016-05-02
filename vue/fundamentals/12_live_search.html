@@ -1,0 +1,50 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>live search</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="form-group">
+				<label for="query">搜索:</label>
+				<input type="text" class="form-control" v-model="query"/>
+			</div>
+
+			<h3>搜索结果</h3>
+			<ul class="list-group">
+				<li class="list-group-item"
+				    v-for="lang in languages | filterBy query in 'name'">
+					{{$index}}: {{lang.name}} - {{lang.majorIn}}
+				</li>
+			</ul>
+
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		new Vue({
+			el: '.container',
+			data: {
+				languages: [
+					{
+						name: 'JavaScript',
+						majorIn: 'Web'
+					},{
+						name: 'Vue.js',
+						majorIn: 'Web'
+					},{
+						name: 'Bash',
+						majorIn: 'Linux'
+					},{
+						name: 'Python',
+						majorIn: 'Script'
+					},{
+						name: 'Ruby',
+						majorIn: 'Script'
+					}
+				]
+			}
+		}); 
+	</script>
+</html>

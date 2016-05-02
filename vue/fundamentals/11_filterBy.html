@@ -1,0 +1,54 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>v-for</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!-- 可以用来迭代数组或者对象 -->
+			<h2>编程语言</h2>
+
+			<h3>Web</h3>
+			<ul class="list-group">
+				<li class="list-group-item" v-for="lang in languages | filterBy 'Web' in 'majorIn'">
+					{{$index}}. {{lang.name}}
+				</li>
+			</ul>
+
+			<h3>脚本语言</h3>
+			<ul class="list-group">
+				<li class="list-group-item" v-for="lang in languages | filterBy 'Script' in 'majorIn'">
+					{{$index}}. {{lang.name}}
+				</li>
+			</ul>
+
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		new Vue({
+			el: '.container',
+			data: {
+				languages: [
+					{
+						name: 'JavaScript',
+						majorIn: 'Web'
+					},{
+						name: 'Vue.js',
+						majorIn: 'Web'
+					},{
+						name: 'Bash',
+						majorIn: 'Linux'
+					},{
+						name: 'Python',
+						majorIn: 'Script'
+					},{
+						name: 'Ruby',
+						majorIn: 'Script'
+					}
+				]
+			}
+		}); 
+	</script>
+</html>
