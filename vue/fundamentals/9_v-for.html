@@ -7,10 +7,13 @@
 	<body>
 		<div class="container">
 			<!-- 可以用来迭代数组或者对象 -->
-			<h2>v-for 测试</h2>
+			<h2>编程语言</h2>
 			<ul class="list-group">
-				<li class="list-group-item" v-for="i in 11">
-					{{ i }} x 2 = {{ i * 2}}
+				<!-- <li class="list-group-item" v-for="lang in languages">
+					{{$index}}. {{lang}}
+				</li> -->
+				<li class="list-group-item" v-for="(index, lange) in languages">
+					{{index}}. {{lang}}
 				</li>
 			</ul>
 		</div>
@@ -18,7 +21,16 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
 	<script>
 		new Vue({
-			el: '.container'
+			el: '.container',
+			data: {
+				languages: [
+					'JavaScript',
+					'Ruby',
+					'Python',
+					'Swift',
+					'Go'
+				]
+			}
 		}); 
 	</script>
 </html>
