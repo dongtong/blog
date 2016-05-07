@@ -1,0 +1,17 @@
+{
+  "name": "1_getting_started",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "lodash": "^4.11.2",
+    "morgan": "^1.7.0"
+  }
+}
