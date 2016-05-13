@@ -50,6 +50,9 @@ export default class Layout extends React.Component {
 		//	});
 		//}, 2000);
 
+		const { history }  = this.props;
+		console.log(history.isActive('about'))
+		
 		return (
 			<div>
 				<Header 
@@ -62,11 +65,13 @@ export default class Layout extends React.Component {
 				<div>
 					<p>this.props.children</p>
 					{this.props.children}
+
+
 				</div>
 				<div>
 					<button class="btn btn-warning" onClick={this.navigateTo.bind(this)}>Home</button>
-					<Link to="about" class="btn btn-primary">About</Link>
-					<Link to="contact" class="btn btn-success">Contact</Link>
+					<Link to="about/foobar" class="btn btn-primary" activeClassName="active">About</Link>
+					<Link to="contact" class="btn btn-success" activeClassName="active">Contact</Link>
 				</div>
 				<Footer />
 			</div>
