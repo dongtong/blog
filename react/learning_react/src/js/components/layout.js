@@ -5,7 +5,10 @@ import Footer from './footer';
 export default class Layout extends React.Component {
 	constructor() {
 		super();
-		this.name = "foobar";
+		this.state = {
+			name: "foo",
+			title: "Welcome"
+		}
 	}
 
 	getGreeting () {
@@ -20,10 +23,19 @@ export default class Layout extends React.Component {
 			<li>list 3</li>
 		];
 
+		// 仅仅是h3 dom刷新
+		// 刷新状态改变最近的一个DOM
+		// 打开chrome Console > Rendering > Enable paint flashing
+		setTimeout(() => {
+			this.setState({
+				title: "Welcome, Fish!"
+			});
+		}, 2000);
+
 		return (
 			<div>
-				<Header />
-				<h3>{this.name} say: Hello {this.getGreeting()}!</h3>
+				<Header title={this.state.title}/>
+				<h3>{this.state.name} say: Hello {this.getGreeting()}!</h3>
 				<ul>
 					{list}
 				</ul>
