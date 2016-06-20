@@ -11,6 +11,7 @@
 
 			<h3>Web</h3>
 			<ul class="list-group">
+				<!--过滤器函数始终以表达式的值作为第一个参数。带引号的参数视为字符串，而不带引号的参数按表达式计算-->
 				<li class="list-group-item" v-for="lang in languages | filterBy 'Web' in 'majorIn'">
 					{{$index}}. {{lang.name}}
 				</li>
