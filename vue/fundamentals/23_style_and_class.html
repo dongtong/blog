@@ -1,0 +1,44 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<style type="text/css">
+			.blue-bg {
+				background-color: #0000ff;
+			}
+
+			.red-bg {
+				background-color: #ff0000;
+			}
+		</style>
+	</head>
+	<body class="text-center" v-bind:class='{"red-bg": color, "blue-bg": !color}'>
+		<div class="container" v-bind:class="[color ? 'red-bg' : 'blue-bg']">
+			<button class="btn" @click="toggleColor" :style="primaryStyle">Toggle Color</button>
+			<!-- <button class="btn" @click="toggleColor" :style="{color: '#fff', fontSize: '20px'}">Toggle Color</button> -->
+			<!-- <button class="btn" @click="toggleColor" :style="{color: primaryStyle.color, fontSize: primaryStyle.fontSize}">Toggle Color</button> -->
+			<!-- <button class="btn" @click="toggleColor" :style="[style1, style2]">Toggle Color</button> -->
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script> 
+
+	<script>
+	    // Vue(v-bind:style)检测CSS属性时，如果需要prefix的，vue会选择合适的前缀
+		new Vue({
+			el: 'body',
+			data: {
+				color: true,
+				primaryStyle: {
+					fontSize: '20px',
+					color: '#fff'
+				}
+			},
+			methods: {
+				toggleColor: function () {
+					this.color = !this.color
+				}
+			}
+		});
+	</script>
+</html>
