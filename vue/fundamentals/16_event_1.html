@@ -1,0 +1,37 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>v-show</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+		    <!--v-on会导致HTML dirty, 太冗余-->
+			<!--<button v-on:click="increase">-->
+			<!--事件修饰符-->
+			<button @click.stop.prevent="increase">
+				Up! {{upvotes}}
+			</button>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		var vm = new Vue({
+			el: '.container',
+			data: {
+				upvotes: 0
+			},
+			created: function () {
+				console.log("created:",this.upvotes);
+			},
+			methods: {
+				increase: function (event) {
+					// this	指向的是vue实例
+					this.upvotes++;
+					// // `event` 是原生 DOM 事件
+					// console.log(event.target.tagName)
+				}
+			}
+		}); 
+	</script>
+</html>

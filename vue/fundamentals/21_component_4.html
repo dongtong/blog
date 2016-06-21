@@ -1,0 +1,69 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Lets hear some stories!</h1>
+			<div>
+				<h3>Foo's stories</h3> 
+				<ul class="list-group">
+					<story v-for="story in stories | filterBy 'Foo' in 'author'" :story="story"></story> 
+				</ul>
+
+				<h3>Bar's stories</h3> 
+				<ul class="list-group">
+					<story v-for="story in stories | filterBy 'Bar' in 'author'" :story="story"></story> 
+				</ul>
+
+				<div class="form-group">
+					<label for="query">What are you looking for?</label> 
+					<input v-model="query" class="form-control">
+				</div>
+
+				<h3>Search results:</h3> 
+				<ul class="list-group">
+					<story v-for="story in stories | filterBy query in 'title'" :story="story"></story> 
+				</ul>
+			</div>
+			
+		</div>
+
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script> 
+
+	<!--另外一种申明template方法-->
+	<!--<script type="text/template" id="story-template">-->
+	<template id="story-template">
+		<h2>{{story.author}} write: {{story.title}}</h2>
+	</template>
+
+	<script>
+		// 使用Vue.component注册组件
+		// 参数: tag和constructor
+		// tag就是组件的名称
+		// constructor就是option
+		// 注意避免组件名称重复
+		// 定义component props(因为html对属性大小写不敏感，所以使用-定义属性，而不是驼峰标志)
+		// 当props过多时，使用object定义props
+		Vue.component('story', {
+			template: '#story-template',
+			props: ['story']
+		});
+
+		var vm = new Vue({
+			el: '.container',
+			data: {
+				stories: [{
+					title: 'JavaScript',
+					author: 'foo'
+				}, {
+					title: 'CSS',
+					author: 'bar'
+				}]
+			}
+		});
+	</script>
+</html>

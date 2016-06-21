@@ -1,0 +1,61 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!-- 子组件模板 -->
+		    <template id="child-template">
+		    	<input type="text" v-model="msg" />
+		    	<button @click="notify">Dispath Event</button>
+		    </template>
+
+			<!-- 父组件模板 -->
+		    <div id="events-example">
+		    	<p>messages: {{messages | json}}</p>
+		    	<child v-ref:child></child>
+		    </div>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js"></script> 
+	<script>
+		Vue.component('child', {
+			template: '#child-template',
+			data: function () {
+				return {
+					msg: 'hello'
+				}
+			},
+			methods: {
+				notify: function () {
+					if (this.msg.trim()) {
+						this.$dispatch('child-msg', this.msg);
+						this.msg = '';
+					}
+
+				}
+			}
+		});
+
+		// 初始化父组件
+		// 将收到消息时将事件推入一个数组
+		var parent = new Vue({
+			el: "#events-example",
+			data: {
+				messages: []
+			},
+			// 在创建实例时 `events` 选项简单地调用 `$on`
+			events: {
+				'child-msg': function (msg) {
+					// 事件回调内的 `this` 自动绑定到注册它的实例上
+      				this.messages.push(msg);
+				}
+			}
+		});
+
+		// 访问子组件
+		var child = parent.$refs.child;
+	</script>
+</html>

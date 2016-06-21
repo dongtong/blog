@@ -1,0 +1,71 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Lets hear some stories!</h1>
+			<ul class="list-group">
+			    <!--.sync implement two-way binding-->
+			    <!--默认是单向数据流，从父组件到子组件-->
+				<story v-for="story in stories" :story="story" :favorite.sync="favorite"></story>
+			</ul>
+			<pre>{{ $data | json }}</pre>
+		</div>
+
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script> 
+
+	<!--另外一种申明template方法-->
+	<!--<script type="text/template" id="story-template">-->
+	<template id="story-template">
+		<li class="list-group-item">
+			{{story.author}} write: {{story.title}}
+			Story upvotes: {{story.upvotes}}
+			<button class="btn btn-primary" v-show="!story.voted" @click="upvote">Upvote</button>
+			<button class="btn btn-default" v-show="!isFavorite" v-on:click="setFavorite">Favorite</button>
+			<span v-show="isFavorite" class="pull-right" aria-hidden="true">Liked</span>
+		</li>
+	</template>
+
+	<script>
+		Vue.component('story', {
+			template: '#story-template',
+			props: ['story', 'favorite'],
+			methods: {
+				upvote: function() {
+					this.story.upvotes++;
+					this.story.voted = true;
+				},
+				setFavorite: function() {
+					this.favorite = this.story;
+				}
+			},
+			computed: {
+				isFavorite: function() {
+					return this.story == this.favorite;
+				}
+			}
+		});
+
+		var vm = new Vue({
+			el: '.container',
+			data: {
+				stories: [{
+					title: 'JavaScript',
+					author: 'foo',
+					upvotes: 0,
+					voted: false
+				}, {
+					title: 'CSS',
+					author: 'bar',
+					upvotes: 1,
+					voted: false
+				}],
+				favorite: {}
+			}
+		});
+	</script>
+</html>

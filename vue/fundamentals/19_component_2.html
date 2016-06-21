@@ -1,0 +1,28 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<story></story>
+		</div>
+
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script> 
+	<script>
+		// 使用Vue.component注册组件
+		// 参数: tag和constructor
+		// tag就是组件的名称
+		// constructor就是option
+		// 注意避免组件名称重复
+		Vue.component('story', {
+			template: '<h2>My Story is awesome!</h2>'
+		});
+
+		var vm = new Vue({
+			el: '.container'
+		});
+	</script>
+</html>
