@@ -1,0 +1,81 @@
+<html> 
+	<meta charset="utf-8"></meta>
+	<head>
+		<title>component</title> 
+		<link rel="stylesheet" href="./stylesheets/bootstrap.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Book List</h1>
+			<div id="books_app">
+				<table class="table table-striped">
+					<tr>
+						<td>ID</td>
+						<td>Title</td>
+						<td>Author</td>
+						<td>Actions</td>
+					</tr>
+					<tr v-for="book in books" is="book" :book="book"></tr>
+				</table>
+				<button class="btn btn-primary" @click="new">Add</button>
+			</div>
+		</div>
+
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
+	<!--另外一种申明template方法-->
+	<!--<script type="text/template" id="book-template">-->
+	<template id="book-template">
+		<tr>
+			<td>{{book.id}}</td>
+			<td>{{book.title}}</td>
+			<td>{{book.author}}</td>
+			<td>
+				<div class="btn-group">
+					<button class="btn btn-primary" @click="upvote(book)">Upvote</button>
+					<button class="btn btn-warning" @click="edit(book)">Edit</button>
+					<button class="btn btn-danger" @click="destroy(book)">Destroy</button>
+				</div>
+			</td>
+		</tr>
+	</template>
+
+	<script>
+		Vue.component('book', {
+			template: '#book-template',
+			props: ['book'],
+			methods: {
+				upvote: function() {
+					
+				},
+				edit: function() {
+					
+				},
+				destroy: function() {
+
+				}
+			}
+		});
+
+		var vm = new Vue({
+			el: '#books_app',
+			data: {
+				books: []
+			},
+			ready: function () {
+				this.fetchBooks()
+			},
+			methods: {
+				fetchBooks: function() {
+					this.$http.get('/books')
+					          .then(function(res) {
+					          	vm.$set('books', res.data);
+					          }, function() {
+					          	console.log('fetchBooks error happened');
+					          });
+				}
+			}
+		});
+	</script>
+</html>
