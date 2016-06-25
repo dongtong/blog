@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack ./index.js bundle.js",
+    "start": "webpack-dev-server ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0"
   }
 }
