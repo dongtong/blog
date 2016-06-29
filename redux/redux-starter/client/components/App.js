@@ -1,18 +1,22 @@
-import React, { Component} from 'react';
-import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
+import Home from './Home';
 
-export default class App extends Component {
-	render() {
-		//{this.props.children}
-		// compares to =>
-		//{React.cloneElement(this.props.children, this.props)}
-		return (
-			<div>
-				<h1>
-					<Link to="/">图片库</Link>
-				</h1>
-				{this.props.children}
-			</div>
-		)
-	}
+// data
+function mayStateToProps(state) {
+	return {
+		posts: state.posts,
+		comments: state.comments
+	};
 }
+
+// function
+function mayDispatchToProps(dispatch) {
+	return bindActionCreators(actions, dispatch);
+}
+
+// inject data and functions to Home component
+const App = connect(mayStateToProps, mayDispatchToProps)(Home);
+
+export default App;
