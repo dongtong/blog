@@ -11,7 +11,7 @@ export default class Home extends Component {
 				<h1>
 					<Link to="/">图片库</Link>
 				</h1>
-				{this.props.children}
+				{React.cloneElement(this.props.children, this.props)}
 			</div>
 		)
 	}
