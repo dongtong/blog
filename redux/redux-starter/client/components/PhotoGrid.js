@@ -3,7 +3,6 @@ import Photo from './Photo';
 
 export default class PhotoGrid extends Component {
 	render() {
-        console.log(this.props.posts)
 		return (
 			<div>
 				<div className="photo-grid">

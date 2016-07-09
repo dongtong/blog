@@ -8,7 +8,7 @@ export default class Photo extends Component {
         return (
             <figure className="grid-figure">
                 <div className="grid-photo-wrap">
-                    <Link to={`/view/${post.code}`}>
+                    <Link to={`/photos/${post.code}`}>
                         <img src={post.display_src} alt={post.caption} className="grid-photo"></img>
                     </Link>
 
@@ -18,13 +18,14 @@ export default class Photo extends Component {
                         transitionLeaveTimeout={500}>
                         <span key={post.like} className="likes-heart">{post.likes}</span>
                     </CSSTransitionGroup>
+
                 </div>
 
                 <figure>
                     <p>{post.caption}</p>
                     <div className="control-buttons">
-                        <button className="likes">&hearts; {post.likes}</button>
-                        <Link className="button" to={`/view/${post.code}`}>
+                        <button onClick={this.props.increment.bind(null, index)} className="likes">&hearts; {post.likes}</button>
+                        <Link className="button" to={`/photos/${post.code}`}>
                             <span className="comment-count">
                                 <span className="speech-bubble"></span>
                                 {comments[post.code] ? comments[post.code].length : 0}
