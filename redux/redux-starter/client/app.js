@@ -1,7 +1,7 @@
 // let's go!
 import React from 'react';
 import { render } from 'react-dom';
-
+import style from './styles/style.styl';
 import App from './components/App';
 import PhotoGrid from './components/PhotoGrid';
 import Detail from './components/Detail';
