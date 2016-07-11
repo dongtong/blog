@@ -4,13 +4,16 @@ import Comments from './comments';
 
 export default class Detail extends Component {
 	render() {
-        const index = this.props.posts.findIndex((post) => post.code === this.props.params.photoId);
+        // deconstructor
+        const { photoId } = this.props.params;
+        const index = this.props.posts.findIndex((post) => post.code === photoId);
         const post = this.props.posts[index];
+        const postComments = this.props.comments[photoId] || [];
 
 		return (
-			<div>
+			<div className="single-photo">
 				<Photo index={index} post={post} {...this.props} />
-                <Comments />
+                <Comments postComments={postComments} {...this.props}/>
 			</div>
 		)
 	}

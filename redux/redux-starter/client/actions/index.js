@@ -8,6 +8,7 @@ export function increment (index) {
 
 // add comment
 export function addComment(photoId, author, comment) {
+	console.log(photoId, author, comment)
 	return {
 		type: 'ADD_COMMENT',
 		photoId,
