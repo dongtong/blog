@@ -8,8 +8,9 @@ export default class Comment extends Component {
                 <p>
                     <strong>{comment.user}</strong>:
                     {comment.text}
-                    <button className="remove-comment">&times;</button>
-                </p>
+                    <button className="remove-comment" 
+                    onClick={this.props.removeComment.bind(null, this.props.params.photoId, index)}>&times;</button>
+                </p> 
             </div>
         );
     }
@@ -22,12 +23,14 @@ export default class Comment extends Component {
         const author = this.refs.author.value;
         const comment = this.refs.comment.value;
         this.props.addComment(photoId, author, comment);
+        // javascript reset()
+        this.refs.commentForm.reset();
     }
 
     render() {
         return (
             <div className="comment">
-                {this.props.postComments.map(this.renderComment)}
+                {this.props.postComments.map(this.renderComment.bind(this))}
                 <form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" ref="author" placeholder="author" />
                     <input type="text" ref="comment" placeholder="comment content..." />
