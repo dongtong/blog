@@ -120,4 +120,18 @@
 
   Yeah...
 
-  We could build by webpack instead of typescript compiler.
+  We could build by webpack instead of typescript compiler
+
+7. Optimize webpack building and use webpack-dev-server
+
+   Use webpack to insert script in html and move html to dist folder automatically.
+
+       npm install html-webpack-plugin --save-dev
+
+   Remove script refer in src/index.html, then build.
+
+   We could optimize bundle.js for production:
+
+       "build:prod": "webpack -p --inprogress"
+
+      
