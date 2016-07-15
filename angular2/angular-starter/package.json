@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --rootDir src --outDir dist"
+    "build": "webpack --inprogress",
+    "postinstall": "typings install"
   },
   "author": "",
   "license": "MIT",
@@ -22,7 +23,9 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
-    "typings": "^1.3.1"
+    "typings": "^1.3.1",
+    "webpack": "^1.13.1"
   }
 }

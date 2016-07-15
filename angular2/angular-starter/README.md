@@ -63,3 +63,61 @@
 
 
 6. Use webpack to compile
+
+       npm install webpack --save-dev
+
+   install typescript loader
+
+       npm install ts-loader --save-dev
+ 
+   add webpack.config.js
+
+   then run webpack
+
+       $(npm bin)/webpack --inprogress
+
+       Hash: 8ffaec73a1ce13f4b0d5
+       Version: webpack 1.13.1
+       Time: 3607ms
+            Asset     Size  Chunks             Chunk Names
+       bundle.js  1.57 MB       0  [emitted]  main
+            + 281 hidden modules
+
+   Why so big? because import angular dependencies and dependencies.
+
+   At last we could use bundle.js in html file instead of main.js.
+
+   But browser reports:
+
+       throw 'reflect-metadata shim is required when using class decorators';
+
+   Ok, we have install reflect-metadata npm install our project, but webpack does not bundle with it explicity yet.
+  
+   We could import neccessary libraies in main.ts
+
+       import 'core-js';           // all of modules
+       import 'reflect-matadata';  // all of modules
+       import 'zone.js/dist/zone'; // is special
+   
+   Use webpack to compile again:
+
+       Hash: a1904cd8c44a54986b9a
+       Version: webpack 1.13.1
+       Time: 3808ms
+       Asset     Size  Chunks             Chunk Names
+       bundle.js  2.01 MB       0  [emitted]  main
+       + 613 hidden modules
+
+   You see, bundle.js is bigger. because of above three modules.
+
+   Run again. opps, the browser still reports error:
+
+       The selector "my-app" did not match any elements
+
+  Two ways to fix it, one is make script refer bottom, another is observe dom is ready in main.ts.
+
+  I prefer the first. 
+
+  Yeah...
+
+  We could build by webpack instead of typescript compiler.
