@@ -134,4 +134,9 @@
 
        "build:prod": "webpack -p --inprogress"
 
+   Use webpack-dev-server to hot-reload when development.
+
+       "server": "webpack-dev-server --inline --inprogress"
+
+   It will load bundle.js into memory, if bundle.js changed, it will reload quickly.
       

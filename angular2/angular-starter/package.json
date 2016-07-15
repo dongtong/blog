@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --inprogress",
     "build:prod": "webpack -p --inprogress",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "server": "webpack-dev-server --inline --inprogress"
   },
   "author": "",
   "license": "MIT",
@@ -28,6 +29,7 @@
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "typings": "^1.3.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
