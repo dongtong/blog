@@ -44,4 +44,22 @@
    then we could run ```typings install``` to install dependency libraries.
 
 
+4. Add postinstall hooks when npm install
 
+      "postinstall": "typings install"
+
+   Firstly ```npm install``` and then ```typings install```
+
+
+5. Add compiled app javascript file to html.
+
+     ``<script src="../dist/main.js"></script>``
+   
+   and browser reports:
+
+     ```Uncaught ReferenceError: require is not defined```
+   
+   Then we could use System.js or Webpack to make it support require function.
+
+
+6. Use webpack to compile

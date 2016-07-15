@@ -1,4 +1,4 @@
-node_modules
-typings
+node_modules/
+typings/
 .DS_Store
 npm-debug.log
