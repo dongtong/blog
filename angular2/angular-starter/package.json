@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --inprogress",
+    "build:prod": "webpack -p --inprogress",
     "postinstall": "typings install"
   },
   "author": "",
