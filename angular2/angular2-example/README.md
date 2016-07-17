@@ -69,3 +69,9 @@
      [(ngModel)]='xxxx' 绑定Component Class属性。
 
    - 使用管道处理数据
+
+     Angular有一些内建的pipe处理: date, number, decimal, percent, currency, json, slice等等.
+
+       {{ product.productName | upppercase}}
+
+       {{ product.price | currency:'USD':true:'1.2-2' | lowercase |}}
