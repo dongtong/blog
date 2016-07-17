@@ -56,8 +56,9 @@
 
      []绑定属性对象，''绑定源， []绑定方式是官方推荐的。
      
-       <img [src]='product.imageUrl' />
-       <img src={{product.imageUrl}} />
+         <img [src]='product.imageUrl' />
+
+         <img src={{product.imageUrl}} />
 
 
    - 用事件绑定处理事件
@@ -72,6 +73,18 @@
 
      Angular有一些内建的pipe处理: date, number, decimal, percent, currency, json, slice等等.
 
-       {{ product.productName | upppercase}}
+         {{ product.productName | upppercase}}
 
-       {{ product.price | currency:'USD':true:'1.2-2' | lowercase |}}
+         {{ product.price | currency:'USD':true:'1.2-2' | lowercase |}}
+
+- 深入Compnent
+
+   - 强类型和定义接口
+
+   - 封装样式
+
+   - 生命周期钩子方法
+
+   - 自定义pipes
+
+   - 嵌套Component
