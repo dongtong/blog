@@ -66,4 +66,6 @@
 
    - 使用双向绑定处理input事件
 
+     [(ngModel)]='xxxx' 绑定Component Class属性。
+
    - 使用管道处理数据

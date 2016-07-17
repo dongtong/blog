@@ -10,6 +10,7 @@ export class ProductListComponent {
    imageWidth: number = 50;
    imageMargin: number = 2;
    showImage: boolean = false;
+   filterText: string = 'carts';
    
    products: any[] = [
     {
