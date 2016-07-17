@@ -41,4 +41,13 @@
     内建指令包含了结构指令（*ngIf, *ngFor etc. 用来组织View展示）。
 
     *ngIf当表达式为false时，DOM从页面删除，当表达式为true时，DOM生成一份拷贝插入DOM中。
+ 
+        *ngIf='products && products.length'
 
+    *ngFor用来迭代集合或者对象。 #定义迭代本地对象
+
+        *ngFor='#product of products'
+
+    for...of用来迭代集合，for...in用来迭代对象，如果用for...in迭代集合，得到的是集合的索引。
+
+     
