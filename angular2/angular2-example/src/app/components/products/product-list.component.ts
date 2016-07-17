@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IProduct } from '../../interfaces/iproduct';
 
 @Component({
@@ -7,7 +7,7 @@ import { IProduct } from '../../interfaces/iproduct';
   styleUrls: ['src/app/stylesheets/product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
    productListTitle: string = 'Product List';
    imageWidth: number = 50;
    imageMargin: number = 2;
@@ -66,6 +66,10 @@ export class ProductListComponent {
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
   ];
+
+  ngOnInit(): void {
+      console.log('retrive data...');
+  }
 
   toggleImage(): void {
       this.showImage = !this.showImage;

@@ -46,7 +46,7 @@
 
     *ngFor用来迭代集合或者对象。 #定义迭代本地对象
 
-        *ngFor='#product of products'
+        *ngFor='let product of products'
 
     for...of用来迭代集合，for...in用来迭代对象，如果用for...in迭代集合，得到的是集合的索引。
 
@@ -103,6 +103,16 @@
          })
 
    - 生命周期钩子方法
+
+     有以下几个阶段:
+
+         create -> render -> create and render children -> process changes(循环处理) ->  destroy
+
+     方法:
+
+     OnInit: 组件初始化，获取数据
+     OnChanges: 执行修改操作，一般针对input属性
+     OnDestroy: 清理
 
    - 自定义pipes
 
