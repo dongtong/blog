@@ -29,5 +29,10 @@
 
   - 使用内插实现绑定
 
+    绑定就是协同组件类与模板之间的通信，保证它们之间的数据传递。单向绑定是数据流单项传递，一般是从component class传递到
+    template。 双向绑定是同时template有一些交互改变class状态。
+
+    template 表达式就是实现interpolation(内插值解析)
+
   - 給指令添加逻辑
 
