@@ -91,6 +91,17 @@
 
    - 封装样式
 
+     有时候一些样式只在特定组件中使用。这时候需要封装这些样式。可以将样式内联写到HTML元素中，但是这些样式
+     不容易重用。可以定义外联的样式，在@Component中引用。
+
+         @Component({
+           styles: ['div {color: #666}']
+         })
+
+         @Component({
+           styleUrls: ['path to your style css']
+         })
+
    - 生命周期钩子方法
 
    - 自定义pipes

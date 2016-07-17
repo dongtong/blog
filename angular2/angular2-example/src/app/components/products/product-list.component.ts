@@ -3,7 +3,8 @@ import { IProduct } from '../../interfaces/iproduct';
 
 @Component({
   selector: 'products',
-  templateUrl: 'src/app/templates/products/product-list.component.html'
+  templateUrl: 'src/app/templates/products/product-list.component.html',
+  styleUrls: ['src/app/stylesheets/product-list.component.css']
 })
 
 export class ProductListComponent {
