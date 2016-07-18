@@ -1,12 +1,18 @@
 import { Component, OnInit} from '@angular/core';
+// 引入接口
 import { IProduct } from '../../interfaces/iproduct';
+// 引入pipes
 import { ProductFilterPipe } from '../../pipes/product-filter.pipe';
+// 引入自定义组件
+import { StarComponent } from '../star/star.component';
+
 
 @Component({
   selector: 'products',
   templateUrl: 'src/app/templates/products/product-list.component.html',
   styleUrls: ['src/app/stylesheets/product-list.component.css'],
-  pipes: [ProductFilterPipe]
+  pipes: [ProductFilterPipe],
+  directives: [StarComponent]
 })
 
 export class ProductListComponent implements OnInit {

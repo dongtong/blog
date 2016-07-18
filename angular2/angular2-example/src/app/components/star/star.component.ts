@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular2/core';
+import { Component, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'ai-star',

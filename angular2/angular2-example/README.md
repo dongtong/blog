@@ -152,9 +152,38 @@
 
    - 嵌套Component
 
-      构建嵌套组件
+      构建嵌套组件: selector: ai-star作为引用
+
+          import { Component, OnChanges } from '@angular2/core';
+
+          @Component({
+            selector: 'ai-star',
+            templateUrl: 'src/app/templates/star/star.component.html',
+            styleUrls: ['src/app/stylesheets/star.component.css']
+          })
+
+          export class StarComponent implements OnChanges{
+            rating: number = 4;
+            starWidth: number;
+
+            ngOnChanges(): void {
+              this.starWidth = this.rating * 86 / 5;
+            }
+          }
 
       使用嵌套组件
+
+          // 引入自定义组件
+          import { StarComponent } from '../star/star.component';
+
+          // 作为directives
+          @Component({
+            //...
+            directives: [StarComponent]
+          })
+
+          //template使用
+          <ai-star></ai-star>
 
       使用@input传递数据到嵌套组件
 
