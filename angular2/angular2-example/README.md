@@ -237,14 +237,29 @@
       构建一个service
 
           // 创建Service Class
+          import { Injectable } from '@angular/core';
+
+          @Injectable() // 可选
+          export class ProductService {
+          }
 
           // 使用decorator定义元数据
+          @Injectable() // 可选，但是建议写上
 
           // 导入service
+          import { ProductService } from '../../services/product.service';
 
-          
 
-      注册service
+      注册service: 需要注册一个provider(创建或者返回service, 就是service class本身)， 把它作为组件元信息。使用provider
+      注册到组件本身以及它的子组件中。
 
-      注入service
+      注入service: 使用Injectable可以将service注入到任何组件以及相关的子组件中。
+      使用constructor注入。
+
+           // 组件类中注入
+           constructor(private _productService: ProductService) {
+     
+           }
+   
+
 

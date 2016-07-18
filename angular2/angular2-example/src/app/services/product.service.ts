@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IProduct } from '../interfaces/iproduct';
 
 @Injectable() // 可选
 export class ProductService {
@@ -57,5 +58,5 @@ export class ProductService {
       }
     ];
   }
-  
+
 }
