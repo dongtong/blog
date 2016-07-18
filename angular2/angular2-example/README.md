@@ -151,3 +151,12 @@
           *ngFor='let product of products | productFilter: filterText'
 
    - 嵌套Component
+
+      构建嵌套组件
+
+      使用嵌套组件
+
+      使用@input传递数据到嵌套组件
+
+      使用@output从嵌套组件中抛出事件
+
