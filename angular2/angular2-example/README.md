@@ -193,5 +193,32 @@
           // 接受@Input()
           @Input() rating: number;
 
-      使用@Output()从嵌套组件中抛出事件
+      使用@Output()从嵌套组件中抛出事件給父组件
+
+          // 使用@Output定义一个事件触发器
+          import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+
+          @Output() ratingClicked: EventEmitter<string> =  new EventEmitter<string>();
+
+          // 在嵌套组件中绑定事件
+          <div class="crop"
+              [style.width.px]='starWidth'
+              [title]='rating'
+              (click)='onClick()'
+                >...</div>
+
+          // 在嵌套组件中定义事件处理(触发事件，让事件向上传递)
+          onClick(): void {
+            this.ratingClicked.emit(`The rating ${this.rating} was clicked`);
+          }
+
+          // 容器组件定义绑定事件处理
+          <ai-star [rating]='product.starRating'
+                  (ratingClicked)='onRatingClicked($event)'
+          ></ai-star>
+
+          // 最后一步，容器组件处理传递上来的事件
+          onRatingClicked(payload: string): void {
+              this.productListTitle = 'Product List: ' + payload;
+          }
 
