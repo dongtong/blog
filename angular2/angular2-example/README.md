@@ -185,7 +185,13 @@
           //template使用
           <ai-star></ai-star>
 
-      使用@input传递数据到嵌套组件
+      使用@Input()传递数据到嵌套组件
+          
+          // 绑定属性
+          <ai-star [rating]='product.starRating'></ai-star>
 
-      使用@output从嵌套组件中抛出事件
+          // 接受@Input()
+          @Input() rating: number;
+
+      使用@Output()从嵌套组件中抛出事件
 
