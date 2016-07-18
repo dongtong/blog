@@ -221,4 +221,30 @@
           onRatingClicked(payload: string): void {
               this.productListTitle = 'Product List: ' + payload;
           }
+   
+   - 服务和依赖注入
+
+      服务就是关注特定目的的类。独立于其他组件，提供一些共享数据或者跨组件逻辑。封装一些额外交互。
+
+      如何工作?
+
+      依赖注入是一种编码模式，是一个class从外界接收一个需要的对象实例(依赖)，而不是创建。这个外界就是Angular Injector
+
+          Service       Component
+             |              |
+             |---Injector---|
+
+      构建一个service
+
+          // 创建Service Class
+
+          // 使用decorator定义元数据
+
+          // 导入service
+
+          
+
+      注册service
+
+      注入service
 
