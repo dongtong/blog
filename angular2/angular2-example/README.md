@@ -268,9 +268,49 @@
 
        初始化
 
+           // 引入Http service和Observable
+           import { Http, Response } from '@angular/http';
+
+           // 引入RxJS, 按需引入
+           import {Observable} from 'rxjs/Rx';
+           import 'rxjs/add/operator/map';
+
+           //app.component.ts
+           import { HTTP_PROVIDERS } from '@angular/http';
+           @Component({
+             ...
+             providers: [ HTTP_PROVIDERS ] 
+           })
+
        发送HTTP请求
 
+           constructor(private _http: Http) {
+              // 注入Http service
+           }
+
+           // 发送
+           getProducts(): Observable<IProduct[]> {
+              return this._http.get(this._url)
+                        .map((response: Response) => <IProduct[]> response.json())
+                        .do(data => console.log('Products:', JSON.stringify(data)))
+                        .catch(this._handleError);
+           }
+
+           // 错误处理
+           private _handleError(error: Response) {
+              console.log('getProducts error:', error);
+              return Observable.throw(error.json().error || "Service error");
+           }
+
        订阅到一个可观察者
+
+           ngOnInit(): void {
+                this._productService.getProducts()
+                    .subscribe(
+                        products => this.products = products,
+                        error => this.errorMessage = <any>error
+                    );
+           }
 
        Promise和Observable: Promise返回一个值，不可以取消。Observable可以与多个值结合使用，支持取消
        支持map, filter, reduce以及类似的操作。
