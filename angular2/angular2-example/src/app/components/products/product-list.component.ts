@@ -24,6 +24,7 @@ export class ProductListComponent implements OnInit {
    showImage: boolean = false;
    filterText: string = '';
    products: IProduct[];
+   errorMessage: string;
 
    constructor(private _productService: ProductService) {
      
@@ -31,8 +32,11 @@ export class ProductListComponent implements OnInit {
    
   ngOnInit(): void {
       console.log('retrive data...');
-      this.products = this._productService.getProducts();
-      console.log(this.products);
+      this._productService.getProducts()
+          .subscribe(
+              products => this.products = products,
+              error => this.errorMessage = <any>error
+          );
   }
 
   toggleImage(): void {

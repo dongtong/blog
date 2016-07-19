@@ -254,12 +254,27 @@
       注册到组件本身以及它的子组件中。
 
       注入service: 使用Injectable可以将service注入到任何组件以及相关的子组件中。
-      使用constructor注入。
+      使用constructor注入, 当组件实例化时，service已经被注入。
 
            // 组件类中注入
            constructor(private _productService: ProductService) {
      
            }
+
+
+   - HTTP和响应式编程
+
+       可观察者(Observable)和响应式扩展： 数组元素异步迭代，用来管理异步数据。迎合ES2016新特性，在Angular中可以使用RxJS
+
+       初始化
+
+       发送HTTP请求
+
+       订阅到一个可观察者
+
+       Promise和Observable: Promise返回一个值，不可以取消。Observable可以与多个值结合使用，支持取消
+       支持map, filter, reduce以及类似的操作。
+  
    
 
 
