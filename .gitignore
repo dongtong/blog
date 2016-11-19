@@ -1,2 +1,6 @@
 node_modules
 riot/riot_learning/node_modules
+.idea
+rxjs/node_modules
+rxjs/typings
+rxjs/.idea
