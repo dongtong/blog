@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+
+<div id="sample">
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Two</button>
+    <p>{{counter}} | {{secondCounter}}</p>
+    <p>{{ result() }} | {{ output }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#sample',
+        data: {
+            counter: 0,
+            secondCounter: 0
+        },
+        computed: {
+            output: function() {
+                console.log('Computed')
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+            }
+        },
+        methods: {
+            result: function() {
+                console.log('Methods')
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+            }
+        }
+    })
+</script>
+</body>
+</html>

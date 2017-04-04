@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+
+<div id="sample">
+    <button v-on:click="counter++">Increase</button>
+    <p>{{counter}}</p>
+    <p>{{counter > 10 ? 'Greater than 10' : 'less or equal than 10'}}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#sample',
+        data: {
+            counter: 0
+        },
+        methods: {
+            // the second parameter is built-in, do not override $event argument.
+            increase: function(step, event) {
+                if(!this.counter) {
+                    this.counter += 1;
+                } else {
+                    this.counter += step;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
