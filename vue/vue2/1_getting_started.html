@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="https://vuejs.org/js/vue.js"></script>
+
+    <div id="sample">
+        <input type="text" v-on:input="changeMessage">
+        <h2 v-once>{{ message }}</h2>
+        <p>{{greet()}}</p>
+        <a v-bind:href="link">Google it</a>
+        <hr>
+        <p>{{searchLink}}</p>
+        <p v-html="searchLink"></p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#sample",
+            data: {
+                message: "Hello Vue.js",
+                link: "https://google.com",
+                searchLink: "<a href='https://google.com'>Search</a>"
+            },
+            methods: {
+                changeMessage: function(event) {
+                    this.message = event.target.value
+                },
+                greet: function() {
+                    this.message = "Hello";
+                    return this.message;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

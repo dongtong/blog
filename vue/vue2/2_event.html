@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="https://vuejs.org/js/vue.js"></script>
+
+    <div id="sample">
+        <button v-on:click="increase(2, $event)">Increase</button>
+        <p>{{counter}}</p>
+        <div v-on:mousemove="showCoordinates" style="width:1200px; height: 800px; background: #E5E5E5;">
+            Coordinates: ({{x}}, {{y}})
+            <!--v-on:mousemove="freezeZone"-->
+            <div style="width:300px; height: 200px; background: #CCC; margin: 100px;" v-on:mousemove.stop.prevent=""></div>
+            <input type="text" v-on:keyup.enter.space="warn"/>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#sample',
+            data: {
+                counter: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                // the second parameter is built-in, do not override $event argument.
+                increase: function(step, event) {
+                    if(!this.counter) {
+                        this.counter += 1;
+                    } else {
+                        this.counter += step;
+                    }
+                },
+                showCoordinates: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                freezeZone: function(event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                },
+                warn: function() {
+                    alert("You enter space character.")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
