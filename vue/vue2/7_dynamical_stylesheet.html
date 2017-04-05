@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://vuejs.org/js/vue.js"></script>
+
+    <div id="sample">
+        <!--<div class="demo" @click="showRedBg = !showRedBg" :class="{red: showRedBg}"></div>-->
+        <div class="demo" @click="showRedBg = !showRedBg" :class="divClasses"></div>
+        <div class="demo" :class="[color, {red: showRedBg}]"></div>
+        <div class="demo" :class="color"></div>
+        <div class="demo" :style="{'background-color':color}"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle, {height: this.width + 'px'}]"></div>
+        <hr/>
+        <input type="text" v-model="color"/>
+        <input type="text" v-model="width"/>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#sample',
+            data: {
+                showRedBg: false,
+                color: 'green',
+                width: 100
+            },
+            computed: {
+                divClasses: function() {
+                    return {
+                        red: this.showRedBg,
+                        blue: !this.showRedBg
+                    }
+                },
+                myStyle: function() {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + 'px'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

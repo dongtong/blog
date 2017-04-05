@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+
+<div id="sample">
+    <form action="#">
+        <div v-for="framework in frameworks">
+            <input type="checkbox" v-model="selectedFrameworks" :value="framework"> {{framework}}
+        </div>
+    </form>
+    <p v-if="selectedFrameworks.length > 0 && selectedFrameworks.length < 3">Selected frameworks or libraries: {{selectedFrameworks.join(', ')}}</p>
+    <p v-else-if="selectedFrameworks.length >= 3">You are active!</p>
+    <p v-else>Please select at least one framework or library</p>
+</div>
+
+<script>
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            frameworks: ['Vue', 'React', 'Angular', 'Ember', 'Backbone'],
+            selectedFrameworks: []
+        }
+    })
+</script>
+</body>
+</html>

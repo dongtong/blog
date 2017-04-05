@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="https://vuejs.org/js/vue.js"></script>
+
+    <div id="sample">
+        <!--<button v-on:click="changeLink">Change Link</button>-->
+        <button @click="changeLink">Change Link</button>
+        <!--<a v-bind:href="link">Apple</a>-->
+        <a :href="link">Apple</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#sample',
+            data: {
+                link: 'https://google.com'
+            },
+            methods: {
+                changeLink: function() {
+                    this.link = 'http://apple.com'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+
+<div id="sample">
+    <form action="#">
+        <div v-for="framework in frameworks">
+            <input type="checkbox" v-model="selectedFrameworks" :value="framework"> {{framework}}
+        </div>
+    </form>
+    <p>Selected frameworks or libraries: {{selectedFrameworks.join(', ')}}</p>
+    <hr/>
+    <div v-for="(value, key, index) in address">
+        {{index + 1}}. {{ key }}: {{value}}
+    </div>
+    <hr/>
+    <div v-for="(language, index) in languages">
+        {{index + 1}}. {{language.name}}
+    </div>
+</div>
+
+<script>
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            frameworks: ['Vue', 'React', 'Angular', 'Ember', 'Backbone'],
+            selectedFrameworks: [],
+            address: {
+                street: "100 Broad",
+                city: 'New York',
+                state: 'NY'
+            },
+            languages: [
+                {
+                    id: 1,
+                    name: 'JavaScript'
+                }, {
+                    id: 2,
+                    name: 'Ruby'
+                },{
+                    id: 3,
+                    name: 'Go'
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

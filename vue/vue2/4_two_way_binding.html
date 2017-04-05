@@ -9,14 +9,28 @@
 
 <div id="sample">
     <input type="text" v-model="greeting" />
+    <input type="text" v-model.lazy="lazyGreeting" />
     <p>{{ greeting }}</p>
+    <p>{{ lazyGreeting }}</p>
+    <hr/>
+    <form action="#">
+        <input type="checkbox" v-model="selectedFrameworks" value="Vue"> Vue
+        <input type="checkbox" v-model="selectedFrameworks" value="React"> React
+        <input type="checkbox" v-model="selectedFrameworks" value="Angular"> Angular
+        <input type="checkbox" v-model="selectedFrameworks" value="Ember"> Ember
+        <input type="checkbox" v-model="selectedFrameworks" value="Backbone"> Backbone
+    </form>
+    <p>Selected frameworks or libraries: {{selectedFrameworks.join(', ')}}</p>
 </div>
 
 <script>
-    new Vue({
+    // vm: vue model
+    var vm = new Vue({
         el: '#sample',
         data: {
-            greeting: 'Hello Vue'
+            greeting: 'Hello Vue',
+            lazyGreeting: "",
+            selectedFrameworks: ['Vue']
         }
     })
 </script>
