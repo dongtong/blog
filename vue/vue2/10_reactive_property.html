@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+
+<div id="sample">
+    <p>{{firstName}} {{lastName}}</p>
+
+    <p>{{browser.name}} {{browser.version}}</p>
+
+    <div v-for="fw in frameworks">{{fw}}</div>
+</div>
+
+<script>
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            firstName: 'Foo',
+            lastName: '',
+            browser: {
+                name: 'Chrome'
+            },
+            frameworks: ['Vue', 'Angular', 'React']
+        }
+    });
+
+    vm.lastName = "Bar"
+    // Vue.set(vm, 'lastName', 'Chou')
+
+    Vue.set(vm.browser, 'version', 55);
+
+    // vm.frameworks[3] = 'Ember' does not re-render DOM
+    vm.frameworks.push('Ember')
+    Vue.delete(vm.frameworks, 3);
+</script>
+</body>
+</html>

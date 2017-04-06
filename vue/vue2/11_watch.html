@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<div id="sample">
+    <input type="text" v-model="question"/>
+    {{response}}
+    <ul>
+        <li v-for="product in products">{{product.name}}</li>
+    </ul>
+</div>
+
+<script>
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            question: '',
+            response: '',
+            products: []
+        },
+        //computed: {
+        //    products: function() {
+        //        this return a value immediately, can not wait for Ajax response
+        //    }
+        //},
+        watch: { // it could be used by calling Ajax request
+            // it could not interact with input text
+            question: function(newValue, oldValue) {
+                console.log('newValue----', newValue);
+                console.log('oldValue----', oldValue);
+                if(newValue.indexOf('products') > -1) {
+                    this.response = "Sure, I can list products for you :";
+                    $.getJSON('https://hplussport.com/api/products')
+                            .done(function(data) {
+                                vm.products = data;
+                            })
+                } else {
+                    this.response = "Sorry, I don't understand that question.";
+                    this.products = [];
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

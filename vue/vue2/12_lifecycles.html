@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<div id="sample">
+    <input type="text" v-model="question"/>
+    {{response}}
+    <ul>
+        <li v-for="product in products">{{product.name}}</li>
+    </ul>
+</div>
+
+<script>
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            question: '',
+            response: '',
+            products: []
+        },
+        beforeCreate: function() {
+            console.log('before create');
+        },
+        created: function() {
+            console.log('created');
+            this.question = 'What products we provide?'
+        },
+        beforeMount: function() {
+            console.log('before mount');
+        },
+        mounted: function() {
+            console.log('mounted');
+        },
+        beforeUpdate: function() {
+            console.log('before update');
+        },
+        updated: function() {
+            console.log('updated');
+        },
+        beforeDestroy: function() {
+            console.log('before destroy');
+        },
+        destroyed: function() {
+            console.log('destroyed');
+        },
+        watch: {
+            question: function(newValue, oldValue) {
+                if(newValue.indexOf('products') > -1) {
+                    this.response = "Sure, I can list products for you :";
+                    $.getJSON('https://hplussport.com/api/products')
+                            .done(function(data) {
+                                vm.products = data;
+                            })
+                } else {
+                    this.response = "Sorry, I don't understand that question.";
+                    this.products = [];
+                }
+            }
+        }
+    });
+
+    // DOM has no reactivity after destroying the vm
+    // vm.$destroy()
+
+</script>
+</body>
+</html>

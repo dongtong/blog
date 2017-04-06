@@ -23,6 +23,7 @@
             secondCounter: 0
         },
         computed: {
+            // if property is not changed, computed property is cached
             output: function() {
                 console.log('Computed')
                 return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';

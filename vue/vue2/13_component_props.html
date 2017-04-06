@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<div id="sample">
+    <!--html markup is capital sensitive, so can not recognize theTitle attribute  -->
+    <product-list the-title="Shop product list" :products="theProducts"></product-list>
+</div>
+
+<script>
+    Vue.component('product-list', {
+        template: '<div class="product-list">\
+                    <h2>{{theTitle}}</h2>\
+                    <ul>\
+                      <li v-for="product in products">\
+                        <img :src="product.image" alt="">\
+                        <p><strong>{{product.name}}</strong></p>\
+                        <p>{{product.description}}</p>\
+                      </li>\
+                    </ul>\
+                   </div>',
+        props: ['theTitle', 'products']
+    });
+
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            theProducts: []
+        },
+        created: function() {
+            $.getJSON('https://hplussport.com/api/products')
+                    .done(function(data) {
+                        vm.theProducts = data;
+                    });
+        }
+    });
+
+</script>
+</body>
+</html>
