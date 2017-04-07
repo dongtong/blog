@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<div id="sample">
+    <component :is="'product-list-simple'" the-title="Shop product list" :products="theProducts"></component>
+</div>
+
+<script>
+
+    Vue.component('product-list-simple', {
+        template: '<div class="product-list">\
+                    <h2>{{theTitle}}</h2>\
+                    <ul>\
+                      <product-item v-for="(product,i) in products" :product="product" :key="product.id" :remove-method="remove.bind(this, i)"></product-item>\
+                    </ul>\
+                   </div>',
+        props: ['theTitle', 'products'],
+        methods: {
+            remove: function(i) {
+                this.products.splice(i,1)
+            }
+        }
+    });
+
+    Vue.component('product-item', {
+        template: '<li>\
+                        <p><strong>{{product.name}}</strong></p>\
+                        <p>{{product.description}}</p>\
+                        <button @click="removeMethod">Hide</button>\
+                   </li>',
+        props: ['product', 'removeMethod']
+    })
+
+    // vm: vue model
+    var vm = new Vue({
+        el: '#sample',
+        data: {
+            theProducts: [],
+            componentType: 'product-list'
+        },
+        created: function() {
+            $.getJSON('https://hplussport.com/api/products')
+                    .done(function(data) {
+                        vm.theProducts = data;
+                    });
+        }
+    });
+
+</script>
+</body>
+</html>
