@@ -1,7 +1,7 @@
 <template>
     <li>
         <img :src="product.image">
-        <p><strong>{{product.name}}</strong></p> 
+        <p><strong><router-link :to="`/products/${product.id}`">{{product.name}}</router-link></strong></p> 
         <p>{{product.description}} <a @click="remove">Hide</a></p>
     </li>
 </template>

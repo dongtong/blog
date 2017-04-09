@@ -1,10 +1,9 @@
 <template>
-  <product-list :products="theProducts" :title="title"></product-list>
+  <!--router-view => ProductList-->
+  <router-view :products="theProducts" :title="title"></router-view>
 </template>
 
 <script>
-  import ProductList from './ProductList.vue';
-
   export default {
     name: 'app',
     data () {
@@ -12,9 +11,6 @@
         title: 'Shop products here',
         theProducts: []
       }
-    },
-    components: {
-      'product-list': ProductList
     },
     created() {
       $.getJSON('https://hplussport.com/api/products')
