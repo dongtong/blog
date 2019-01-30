@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Hooks test last user snapshot 1`] = `
+User {
+  "firstName": "foo",
+  "lastName": "bar",
+}
+`;
+
+exports[`User snapshot test user snapshot 1`] = `
+User {
+  "firstName": "foo",
+  "lastName": "bar2",
+}
+`;
